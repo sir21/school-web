@@ -20,7 +20,6 @@ export class SchoolService {
   }
 
   addSchool(school: School): Observable<any> {
-    console.log('service', school);
     return this.http.post(this.baseUrl, school);
   }
 }

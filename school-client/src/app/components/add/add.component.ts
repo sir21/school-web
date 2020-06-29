@@ -38,13 +38,10 @@ export class AddComponent implements OnInit {
   }
 
   onSave(): void {
-    console.log('form', this.schoolForm.controls.name);
-    return;
     if (this.schoolForm.invalid) {
       return;
     }
     const formData = this.schoolForm.value;
-    console.log('data', formData);
     const school: School = {
       id: null,
       name: formData.name,
@@ -56,7 +53,6 @@ export class AddComponent implements OnInit {
       } as Address,
       numberOfStudents: formData.numberOfStudents
     }
-    console.log('school', school);
     this.saveSchool.emit(school);
     this.onClose();
   }
