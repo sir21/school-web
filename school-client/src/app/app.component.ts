@@ -31,7 +31,6 @@ export class AppComponent implements OnInit, OnDestroy {
       .getSchools()
       .pipe(takeUntil(this.unsubscribe))
       .subscribe((response) => {
-        console.log("res", response);
         this.schools = response.schools;
       });
   }
@@ -44,7 +43,6 @@ export class AppComponent implements OnInit, OnDestroy {
     });
 
     dialogRef.componentInstance.saveSchool.subscribe((school: School) => {
-      console.log("text", school);
       this.schoolService.addSchool(school).subscribe(
         () => {
           this.getSchools();

@@ -24,7 +24,6 @@ export const school: School = {
 
 export class MockSchoolService {
   getSchools(): Observable<School[]> {
-    console.log(school);
     return of([school]);
   }
 
