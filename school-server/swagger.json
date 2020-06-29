@@ -1,0 +1,30 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "version": "1.0.0",
+    "title": "School server",
+    "description": "School server with express",
+    "termsOfService": "",
+    "contact": {
+      "name": "Sasitha Iresh(sir21)",
+      "email": "sasitha.iresha@gmail.com"
+    }
+  },
+  "tags": [
+    {
+      "name": "School"
+    }
+  ],
+  "paths": {
+    "/api/school": {
+      "get": {
+        "tags": ["school"],
+        "summary": "Get all schools"
+      },
+      "post": {
+          "tags": ["school"],
+          "summary": "Add new school"
+      }
+    }
+  }
+}

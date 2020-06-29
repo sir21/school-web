@@ -1,55 +1,49 @@
 const express = require('express')
 const app = express()
+const cors = require('cors')
+var bodyParser = require('body-parser')
+const fs = require('fs')
+const swaggerUi = require('swagger-ui-express')
 const port = 3000
 
-// School class
-let schools = [
-    {
-        id: 0,
-        name: 'School 1',
-        address: {
-            street: 'street 1',
-            suburb: 'suburb 1',
-            postCode: 24001,
-            state: 'central'
-        },
-        numberOfStudents: 200
-    },
-    {
-        id: 1,
-        name: 'School 2',
-        address: {
-            street: 'street 145',
-            suburb: 'suburb 2',
-            postCode: 10054,
-            state: 'western'
-        },
-        numberOfStudents: 1500
-    },
-    {
-        id: 2,
-        name: 'School 32',
-        address: {
-            street: 'street 31',
-            suburb: 'suburb 32',
-            postCode: 65200,
-            state: 'south'
-        },
-        numberOfStudents: 788
+const swaggerDocument = require('./swagger.json')
+
+app.use(cors())
+app.use(bodyParser.json())
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
+
+// School API
+
+/*
+    Get schools API
+    this will get all the schools from school.json file
+*/
+app.get('/api/school', (req, res) => {
+    // Get schools from persistent data file
+    const data = fs.readFileSync('./data/school.json');
+    const schools = JSON.parse(data);
+    res.json({title: 'Schools', schools});
+})
+
+/*
+    Add new school
+*/
+app.post('/api/school', (req, res) => {
+    // Get school from request body
+    let school = req.body;
+
+    //Get schools from persistent data file
+    const data = fs.readFileSync('./data/school.json');
+    let schools = JSON.parse(data);
+
+    //Add id if id is not present
+    if (school.id == null) {
+        school.id = schools.length;
     }
-]
-
-app.get('/', (req, res) => res.send('Hello World!'))
-
-// School
-app.get('/school/', (req, res) => res.json({title: 'Schools', schools}))
-app.post('/school/', (req, res) => {
-    const school = req.school;
-    schools = {
-        ...schools,
-        school
-    };
-    res.send('School added')
+    // Save school in persistent data file
+    schools.push(school);
+    fs.writeFileSync('./data/school.json', JSON.stringify(schools));
+    res.send({school});
 })
 
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))

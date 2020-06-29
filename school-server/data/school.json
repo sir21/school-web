@@ -1,0 +1,35 @@
+[
+  {
+    "id": 0,
+    "name": "Royal College",
+    "address": {
+      "street": "Main",
+      "suburb": "Colombo",
+      "postCode": 700,
+      "state": "Western"
+    },
+    "numberOfStudents": 5000
+  },
+  {
+    "id": 0,
+    "name": "Anthony College",
+    "address": {
+      "street": "Circle",
+      "suburb": "Colombo",
+      "postCode": 15800,
+      "state": "Western"
+    },
+    "numberOfStudents": 5000
+  },
+  {
+    "id": 0,
+    "name": "Kingswood College",
+    "address": {
+      "street": "Upper",
+      "suburb": "Kandy",
+      "postCode": 2500,
+      "state": "Central"
+    },
+    "numberOfStudents": 2500
+  }
+]
