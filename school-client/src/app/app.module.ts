@@ -5,9 +5,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
+import { AddComponent } from './components/add/add.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ListComponent } from './components/list/list.component';
-import { ViewComponent } from './components/view/view.component';
 
 // Material
 import { MatButtonModule } from '@angular/material/button';
@@ -19,10 +19,10 @@ import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
+    AddComponent,
     AppComponent,
     HeaderComponent,
-    ListComponent,
-    ViewComponent
+    ListComponent
   ],
   imports: [
     BrowserAnimationsModule,

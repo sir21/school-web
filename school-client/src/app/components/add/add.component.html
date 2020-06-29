@@ -7,6 +7,7 @@
             <mat-form-field>
                 <mat-label>Name</mat-label>
                 <input type="text" matInput formControlName="name">
+                <mat-hint *ngIf="schoolForm.controls.name.invalid && schoolForm.controls.name.touched"><strong class="warning">School name required</strong> </mat-hint>
             </mat-form-field>
         </div>
         <div class="address">
@@ -18,6 +19,7 @@
                     <mat-form-field>
                         <mat-label>Street</mat-label>
                         <input type="text" matInput formControlName="street">
+                        <mat-hint *ngIf="schoolForm.controls.street.invalid && schoolForm.controls.street.touched"><strong class="warning">School address -> street required</strong> </mat-hint>
                     </mat-form-field>
                 </div>
                 <div>
@@ -36,6 +38,7 @@
                     <mat-form-field>
                         <mat-label>State</mat-label>
                         <input type="text" matInput formControlName="state">
+                        <mat-hint *ngIf="schoolForm.controls.state.invalid && schoolForm.controls.state.touched"><strong class="warning">School address -> state required</strong> </mat-hint>
                     </mat-form-field>
                 </div>
             </div>
@@ -44,6 +47,7 @@
             <mat-form-field>
                 <mat-label>Number of Students</mat-label>
                 <input type="number" matInput formControlName="numberOfStudents">
+                <mat-hint *ngIf="schoolForm.controls.numberOfStudents.invalid && schoolForm.controls.numberOfStudents.touched"><strong class="warning">School no. of students required</strong> </mat-hint>
             </mat-form-field>
         </div>
         <div class="buttons">
@@ -51,7 +55,7 @@
                 <button mat-raised-button color="wan" (click)="onClose()">Close</button>
             </div>
             <div>
-                <button mat-raised-button color="primary" (click)="onSave()">Save</button>
+                <button mat-raised-button color="primary" [disabled]="schoolForm.invalid" (click)="onSave()">Save</button>
             </div>
         </div>
     </form>

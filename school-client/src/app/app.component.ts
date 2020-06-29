@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { MatDialog, MAT_DIALOG_DATA } from "@angular/material/dialog";
-import { ViewComponent } from "./components/view/view.component";
+import { AddComponent } from "./components/add/add.component";
 import { Subject } from "rxjs";
 import { takeUntil, tap, subscribeOn } from "rxjs/operators";
 import { School } from "./models/school";
@@ -37,7 +37,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   openNewSchoolDialog(): void {
-    const dialogRef = this.dialog.open(ViewComponent);
+    const dialogRef = this.dialog.open(AddComponent);
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);

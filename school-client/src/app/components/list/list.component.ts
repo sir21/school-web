@@ -1,8 +1,5 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
-import { Subscription, Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators'
+import { Component, Input } from '@angular/core';
 
-import { SchoolService } from '../../services/school.service'
 import { School } from 'src/app/models/school';
 import { MatTableDataSource } from '@angular/material/table';
 
@@ -23,7 +20,6 @@ export class ListComponent {
   data: School[] = []
   displayedColumns: string[] = ['name', 'address', 'numberOfStudents'];
   dataSource =  new MatTableDataSource<School>(this.data);
-  unsubscribe: Subject<boolean> = new Subject<boolean>();
 
   constructor() { }
 
